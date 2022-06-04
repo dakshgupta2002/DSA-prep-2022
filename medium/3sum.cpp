@@ -1,28 +1,46 @@
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<bits/stdc++.h>
+using namespace std;
 
-// class Solution {
-// public:
-//     vector<vector<int>> threeSum(vector<int>& nums) {
-//         unordered_map<int, int> m1;
-//         set<vector<int>> res;
-//         for (int i=0; i<nums.size(); i++) m1[nums[i]]=i;
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
 
-//         for (int i=0; i<nums.size(); i++){
-//             for (int j=i+1; j<nums.size(); j++){
-//                 int target = -(nums[i]+nums[j]);
-//                 if (m1.find(target) != m1.end() && m1[target] != i && m1[target] != j){
-//                     vector<int> v;
-//                     v.push_back(nums[i]);
-//                     v.push_back(nums[j]);
-//                     v.push_back(target);
-//                     sort(v.begin(), v.end());
-//                     res.insert(v);
-//                 }
-//             }
-//         }
-//         vector<vector<int>> ans;
-//         for (auto v: res) ans.push_back(v);
-//         return ans;
-//     }
-// };
+        // teo pointer solution 
+        sort(nums.begin(), nums.end());
+        if (nums.size()<3) return (res);
+        if (nums[0]>0) return (res);
+
+        int i=0; 
+        while (i<nums.size()){
+            // cout << nums[i] << endl;
+            if (nums[i] > 0) break;//this +ve next also +ve
+            if (i>0 && nums[i]==nums[i-1]){ //prev num same, same triplet
+                i++; continue;
+            }
+
+            int j=i+1, k=nums.size()-1;
+            while (j<k){
+                int sum = nums[i]+nums[j]+nums[k];
+                if (sum < 0){
+                    j++;
+                }else if (sum > 0){
+                    k--;
+                }else{
+                    res.push_back({nums[i], nums[j], nums[k]});
+                    j++; k--;
+                    while (j<k && nums[j]==nums[j-1]) j++;
+                    while (k>j && nums[k]==nums[k+1]) k--;
+                    // cout << "j" << j << "k" << k << endl;
+                }
+            }
+            i++;
+        }
+
+        return res;
+    }
+};
+
+
+//first duplicate prevention by skipping same first number 
+//then skipping the second repeating number for the first number
