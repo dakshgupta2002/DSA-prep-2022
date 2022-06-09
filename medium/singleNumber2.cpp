@@ -32,11 +32,19 @@ public:
 };
 
 //need to find a sol in O(n) time and O(1) space
-//that means no more ds but only one loop 
-
+//bit manipulation, xor and 
+//count every 32 bit for every number 
+//the bits that remain (not mod 3 == 0) signify the number  
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        //pending
+        int ones=0, twos=0;
+
+        for (int i=0; i<nums.size(); i++){
+            ones = (ones ^ nums[i]) & ~twos;
+            twos = (twos ^ nums[i]) & ~ones;
+        }
+
+        return ones;
     }
 };
