@@ -44,28 +44,31 @@ ll gcd(ll a , ll b){
 
 
 void solve() {
-    int n; cin>>n;
-    string s; cin>>s;
+    ll n, k; cin >> n >> k;
+    vll v(n);
+    fo (i, n) cin >> v[i];
 
-    bool r=false, b=false;
-    fo(i,n){
-        if (s[i]=='W'){
-            if (r!=b) {
-                cout << "NO" << endl;
-                return;
-            }else{
-                r=false; b=false;
-            }
-        }else if (s[i]=='B') b= true;
-        else r=true;
+    ll ans = 0;
+    
+    for (int j=30; j>=0; j--){
+        //try to make 30th bit same 
+        //check for how many need to be operated 
+        ll check = pow(2, j);
+        int operate = 0;
+ 
+        fo(i, n){
+            int res = v[i] & check;
+            if (res == 0) operate++;
+        }
+
+        if (operate <= k){
+            //nice add this num to sol 
+            ans += check;
+            k-=operate;
+        }
     }
 
-    if (r!=b){
-        cout << "NO" << endl;
-        return;        
-    }
-
-    cout << "YES\n";
+    cout << ans << endl;
 }
 
 

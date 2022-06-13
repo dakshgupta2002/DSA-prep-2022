@@ -45,27 +45,31 @@ ll gcd(ll a , ll b){
 
 void solve() {
     int n; cin>>n;
-    string s; cin>>s;
+    vi v(n);
+    fo(i, n) cin>>v[i];
 
-    bool r=false, b=false;
-    fo(i,n){
-        if (s[i]=='W'){
-            if (r!=b) {
-                cout << "NO" << endl;
-                return;
-            }else{
-                r=false; b=false;
-            }
-        }else if (s[i]=='B') b= true;
-        else r=true;
+    vi p(n+1, 0), s(n+1, 0);
+
+    for (int i=1; i<n+1; i++){
+        p[i] = p[i-1] + v[i-1];
     }
-
-    if (r!=b){
-        cout << "NO" << endl;
-        return;        
+    for (int i=n-1; i>=0; i--){
+        s[i] = s[i+1] + v[i];
     }
+    //
+    int maxCandies = 0;
 
-    cout << "YES\n";
+    int i=0, j=n;
+    while (i<=j){
+        if (p[i] == s[j]){
+            maxCandies = i + (n-j);
+            i++; j--;
+        }else if (p[i]<s[j]){
+            i++;
+        }else j--;
+        
+    }
+    cout << maxCandies << endl;
 }
 
 

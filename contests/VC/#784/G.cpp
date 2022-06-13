@@ -44,28 +44,47 @@ ll gcd(ll a , ll b){
 
 
 void solve() {
-    int n; cin>>n;
-    string s; cin>>s;
+    int n, m; cin>>n>>m;
+    vector<vector<char>> grid(n, vector<char>(m));
+    fo(i, n){
+        fo(j, m) cin >> grid[i][j];
+    }
 
-    bool r=false, b=false;
-    fo(i,n){
-        if (s[i]=='W'){
-            if (r!=b) {
-                cout << "NO" << endl;
-                return;
-            }else{
-                r=false; b=false;
+    fo(j, m){
+        int stones=0;
+        int i=0;
+        while (i<n){
+            if (grid[i][j]=='*') {
+                grid[i][j]='.';
+                stones++;
             }
-        }else if (s[i]=='B') b= true;
-        else r=true;
+            else if (grid[i][j]=='o'){
+                //i have reached obstacle, place all stones above me;
+                int k = i-1;
+                while (stones){
+                    grid[k][j]='*';
+                    stones--;
+                    k--;
+                }
+            }
+            i++;
+            // cout << stones << " ";
+        }
+        int k = n-1;
+        while (stones){
+            grid[k][j]='*';
+            stones--; k--;
+        }
+
+        // cout << j << endl;
     }
 
-    if (r!=b){
-        cout << "NO" << endl;
-        return;        
+    fo(i,n){
+        fo(j,m){
+            cout << grid[i][j];
+        }
+        cout << endl;
     }
-
-    cout << "YES\n";
 }
 
 

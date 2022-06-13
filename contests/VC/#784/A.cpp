@@ -44,7 +44,18 @@ ll gcd(ll a , ll b){
 
 
 void solve() {
-    
+    int rat; cin>>rat;
+    cout << "Division ";
+    if (rat <=1399){
+        cout << 4;
+    }else if (rat <1600){
+        cout << 3;
+    }else if(rat < 1900){
+        cout << 2;
+    }else {
+        cout << 1;
+    }
+    cout << endl;
 }
 
 

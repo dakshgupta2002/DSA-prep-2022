@@ -44,7 +44,17 @@ ll gcd(ll a , ll b){
 
 
 void solve() {
-    
+    int n; cin>>n;
+    vi v(n); mii m;
+    fo(i,n) {cin>>v[i];}
+    fo(i,n){
+        m[v[i]]++;
+        if(m[v[i]]==3){cout << v[i] << endl; return;}
+    }
+    cout << -1 << endl;
+
+
+
 }
 
 
