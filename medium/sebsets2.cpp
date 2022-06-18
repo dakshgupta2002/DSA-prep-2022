@@ -12,7 +12,9 @@ public:
         // same numbers count 
         int count = 0;
         while (i+count < nums.size() && nums[i+count]==nums[i])count++;
-        for (int j=0; j<count; j++){
+        
+        generate(res, temp, nums, i+count); //dont include any of the same
+        for (int j=0; j<count; j++){ //include the number j times 
             temp.push_back(nums[i]);
             generate(res, temp, nums, i+count);
         }
