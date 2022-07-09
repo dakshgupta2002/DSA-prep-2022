@@ -27,3 +27,24 @@ public:
         return jump(nums, k, 0, dp);
     }
 };
+
+
+//to optimize the top-down approach, use bottom-up app
+//while going from bottom to up, store the scores in a max-heap
+class Solution {
+public:
+    int maxResult(vector<int>& nums, int k) {
+        if (nums.size()==1) return nums[nums.size()-1];
+
+        priority_queue<pair<int,int>, vector<pair<int,int>>> scores;
+        scores.push({ nums[nums.size()-1], nums.size()-1});
+
+        for (int i=nums.size()-2; i>=0; i--){
+            while (scores.top().second > i+k) scores.pop();
+
+            if (i==0) break;
+            else scores.push({nums[i]+scores.top().first, i});
+        }
+        return nums[0]+scores.top().first;
+    }
+};
