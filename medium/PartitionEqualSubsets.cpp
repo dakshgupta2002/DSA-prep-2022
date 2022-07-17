@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool canPartitionKSubsets(vector<int>& nums, int k) {
-
+    bool canPartition(vector<int>& nums) {
+        
     }
 };
