@@ -26,13 +26,10 @@ public:
 
     Node* cloneGraph(Node* node) {
         if (node == NULL) return NULL;
-        //already copied this node
-        if (copied[node]) return copied[node]; 
+        if (copied[node]) return copied[node]; //already copied this node
         
-        //copy the node val and neighbors
         Node* newNode = new Node();
-        //save the node before visiting neighbors
-        copied[node] = newNode;
+        copied[node] = newNode; //save the node before visiting neighbors
 
         newNode->val = node->val;
         for (auto &i: node->neighbors){
