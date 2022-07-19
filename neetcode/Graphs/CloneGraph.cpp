@@ -30,15 +30,15 @@ public:
         if (copied[node]) return copied[node]; 
         
         //copy the node val and neighbors
-        Node* newNode = new Node(node->val);
+        Node* newNode = new Node();
+        //save the node before visiting neighbors
         copied[node] = newNode;
-        vector<Node*> neighbours;
 
+        newNode->val = node->val;
         for (auto &i: node->neighbors){
-            neighbours.push_back(cloneGraph(i));
+            newNode->neighbors.push_back(cloneGraph(i));
         }
 
-        newNode->neighbors = neighbours;
         return newNode;    
     }
 };
