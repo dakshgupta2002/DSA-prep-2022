@@ -34,3 +34,9 @@ public:
         return dia;
     }
 };
+
+class Solution2{
+    int diameterOfBinaryTree(TreeNode* root) {
+        
+    }
+};
