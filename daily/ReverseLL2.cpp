@@ -13,26 +13,37 @@ struct ListNode {
 class Solution {
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if (left==right) return head;
+
         ListNode *s=NULL, *l, *r, *e=NULL;
         ListNode* temp=head;
 
         int i=1;
         while (temp){
             if (i==left-1) s=temp;
-            if (i==left) l=temp;
-            if (i==right) r=temp;
-            if (i==right+1) e=temp;
+
+            if (i==left) {
+                l=temp; 
+                i++; temp=temp->next;
+                ListNode* prev=l, *forw=NULL;
+                while (temp && i<=right){
+                    if (i==right) {
+                        r=temp;
+                        e=temp->next;
+                    }
+
+                    forw = temp->next;
+                    temp->next=prev;
+                    prev=temp;
+                    temp=forw;
+
+                    i++;
+                }
+                break;
+            }
             i++;
             temp=temp->next;
         } 
-        
-        ListNode* prev=l, *curr=l->next, *forw=NULL;
-        while (curr && curr!=e){
-            forw = curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=forw;
-        }
 
         l->next = e;
         if (s) s->next = r;
