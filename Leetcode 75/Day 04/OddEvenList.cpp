@@ -36,3 +36,30 @@ public:
         return head;
     }
 };
+
+class Solution2{
+    ListNode* oddEvenList(ListNode* head){
+        if (head==NULL || head->next==NULL) return head;
+
+        ListNode *oddHead = head, *oddTail = head, *evenHead=head->next, *evenTail = head->next;
+
+        int i = 3;
+        ListNode *itr = head->next->next;
+
+        while (itr){
+            if (i%2==1){
+                oddTail->next = itr;
+                oddTail = oddTail->next;
+            }else{
+                evenTail->next = itr;
+                evenTail = evenTail->next;
+            }
+            i++;
+            itr=itr->next;
+        }
+        oddTail->next = evenHead;
+        evenTail->next = nullptr;
+
+        return oddHead;
+    }
+};
