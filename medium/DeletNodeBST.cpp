@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 // Definition for a binary tree node.
@@ -13,7 +13,7 @@ struct TreeNode {
 
 class Solution {
 public:
-    int longestUnivaluePath(TreeNode* root) {
-        
+    TreeNode* deleteNode(TreeNode* root, int key) {
+             
     }
 };
