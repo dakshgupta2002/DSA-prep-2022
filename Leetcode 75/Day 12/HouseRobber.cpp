@@ -3,16 +3,18 @@ using namespace std;
     
 class Solution {
 public:
-    vector<int> dp;
-    int choose(int i, vector<int> &nums){
-        if (i==nums.size()) return 0;
-        if (dp[i] != -1) return dp[i];
-
-        return dp[i] = max(nums[i] + choose(i+2, nums), choose(i+1, nums));
-    }
-
     int rob(vector<int>& nums) {
-        dp.resize(nums.size(), -1);
-        return choose(0, nums);
+        int n=nums.size();
+        if (n==1) return nums[0];
+        if (n==2) return max(nums[0], nums[1]);
+
+        int b = nums[n-1], a = max(nums[n-1], nums[n-2]);
+        
+        for (int i=n-3; i>=0; i--){
+            int c = max(nums[i]+b, a);
+            b=a;
+            a=c;
+        }
+        return a;
     }
 };
