@@ -9,8 +9,16 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-
+//Reverse half of other list and then two pointer
 class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        
+    }
+};
+
+
+class Solution2 {
 public:
     bool isPal(string &s){
         int i=0, j=s.length()-1;
