@@ -14,7 +14,6 @@ struct TreeNode {
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
-        // find the node and change parent and return
-        
+             
     }
 };
