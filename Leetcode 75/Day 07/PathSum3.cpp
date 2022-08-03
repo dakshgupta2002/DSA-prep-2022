@@ -13,8 +13,15 @@ struct TreeNode {
 
 class Solution {
 public:
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        // find the node and change parent and return
+    int ans = 0;
+    int target;
+
+    void travel (TreeNode* root, int sum){
+        if (root=NULL) return;
+        if (sum==target) ans++;
+    }
         
+    int pathSum(TreeNode* root, int targetSum) {
+        target=targetSum;
     }
 };

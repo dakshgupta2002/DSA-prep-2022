@@ -18,6 +18,6 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        //make
+        //make duplicates in between to gain access
     }
 };
