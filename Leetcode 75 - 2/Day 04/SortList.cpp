@@ -10,3 +10,4 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+// merge sort but bottom up

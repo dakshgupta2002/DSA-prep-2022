@@ -4,8 +4,6 @@ using namespace std;
 class Solution {
 public:
     string add(string num1, string num2){
-        // reverse both strings and add 
-        
 
     }
     

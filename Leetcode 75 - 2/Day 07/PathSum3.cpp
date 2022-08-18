@@ -17,7 +17,7 @@ public:
     int target;
 
     void travel (TreeNode* root, int sum){
-        if (root=NULL) return;
+        if (root==NULL) return;
         if (sum==target) ans++;
     }
         
