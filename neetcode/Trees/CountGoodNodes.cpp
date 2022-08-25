@@ -17,12 +17,10 @@ public:
         if (root==NULL) return;
         if (root->val > max){
             ans++;
-            findGood(root->left, root->val);
-            findGood(root->right, root->val);
-        }else{
-            findGood(root->left, max);
-            findGood(root->right, max);
+            max = root->val;
         }
+        findGood(root->left, max);
+        findGood(root->right, max);
     }
 
     int goodNodes(TreeNode* root) {
