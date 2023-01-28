@@ -28,5 +28,5 @@ public:
         }  
         pathLR(0, s);    
         return ans;
-    }
 };
+    }
